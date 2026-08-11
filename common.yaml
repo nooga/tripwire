@@ -1,0 +1,18 @@
+namespace: tripwire
+
+# Hub catalog metadata (kit pattern: metadata-only block, no empty process-group).
+common:
+  metadata:
+    name: Tripwire
+    description: >-
+      Discover and scan AI skills and MCP servers, then review findings in one
+      Live dashboard. Provisions managed Supabase, runs in-cluster schema and
+      Modal bootstrap from injected secrets (no local .env), serves the Tripwire
+      UI via ingress, and collects Modal plus scanner SaaS credentials for full
+      Live scan coverage.
+    tags: security,ai,mcp,skills,dashboard,supabase,modal,scanning,bootstrap
+    website: https://github.com/neomatrix369/tripwire
+    source: https://github.com/neomatrix369/tripwire
+    license: MIT
+    publisher: tripwire
+    icon: https://raw.githubusercontent.com/neomatrix369/tripwire/main/Tripwire-Banner.png

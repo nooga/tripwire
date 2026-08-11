@@ -1,0 +1,41 @@
+namespace: tripwire
+
+# Mutable "latest" track — thin inherits over immutable v1.0.0 definitions.
+
+supabase:
+  defines: supabase/project
+  inherits: tripwire/supabase-v1
+
+bootstrap:
+  defines: runnable
+  inherits: tripwire/bootstrap-v1
+  connections:
+    supabase:
+      runnable: tripwire/supabase
+      service: data
+  depends:
+    wait-for:
+      runnables:
+        - tripwire/supabase
+      timeout: 900
+
+dashboard:
+  defines: runnable
+  inherits: tripwire/dashboard-v1
+  connections:
+    supabase:
+      runnable: tripwire/supabase
+      service: data
+  depends:
+    wait-for:
+      runnables:
+        - tripwire/supabase
+      timeout: 900
+
+prod:
+  defines: group
+  inherits: tripwire/prod-v1
+  members:
+    - tripwire/supabase
+    - tripwire/bootstrap
+    - tripwire/dashboard
